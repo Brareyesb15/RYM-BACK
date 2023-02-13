@@ -21,8 +21,9 @@ server.use(morgan("dev"));
 
 server.use(express.json());
 
-sequelize.sync({ force: false }).then(() => {
-    
+sequelize.sync({ force: true }).then(() => {
+    saveApiData(),
+    saveApiLocations();
 })
 
 server.use(mainRouter); // te permite modularizar tus routes.
